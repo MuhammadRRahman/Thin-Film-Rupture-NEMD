@@ -1,8 +1,10 @@
 # Thin-Film-Rupture
-1. Initially, run in NVT ensemble.
+Flowmol MD solver was used for the simulations. This is an open source platform developed by one of the authors (E. R. Smith) and can be found here: https://github.com/edwardsmith999/flowmol#flowmol
+
+1. Initially, run <b>film.in</b> with NVT ensemble.
 2. Depending on the poking technique:
-     (i) Poked-hole: run poke.in for few time steps (i.e, 1000)
-    (ii) Cut-hole: run cut.py 
+     (i) Poked-hole: run <b>poked-film.in</b> for few time steps (i.e, 1000)
+    (ii) Cut-hole: run <b>cut-film.py</b> 
 3. Use the final_state from step 2 as a restart file to run production.in in NVE ensemble
 
 # Analysing the data
