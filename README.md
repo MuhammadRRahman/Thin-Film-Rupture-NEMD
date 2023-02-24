@@ -3,7 +3,7 @@ Flowmol MD solver was used for the simulations. This is an open source platform 
 
 1. Initially, run <b>MD_01_equilibration.in</b> with NVT ensemble.
 2. Depending on the poking technique:
-     (i) Poked-hole: run <b>MD_02_poke_a_hole.in</b> for few time steps (i.e, 1000) with the final_state generated from the NVT in step (1).
+     (i) Poked-hole: run <b>MD_02_poke_a_hole.in</b> for few time steps (i.e, 1000) with the final_state generated from step (1).
 3. Use the final_state from step 2 as a restart file to run MD_03_production.in with NVE ensemble for sufficiently long time.
 
 # Analysing the data
