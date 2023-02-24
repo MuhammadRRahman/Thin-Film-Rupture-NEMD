@@ -7,8 +7,7 @@ Flowmol MD solver was used for the simulations. This is an open source platform 
 3. Use the final_state from step 2 as a restart file to run MD_03_production.in with NVE ensemble for sufficiently long time.
 
 # Analysing the data
+1. Func_hole_growth.py and Func_surface_functions.py contains the required subroutines called from other .py files.
 1. Run hole-growth.py to track the hole radius over time.
-2. Run surface-tension.py to measure the bulk surface tension of the film.
-3. Run local-surface-tension.py to measure local surface tension.
-4. Run rotated-surface-tension.py to measure surface tension with pressure tensor rotated along the local normal and tangential directions.
-5. Rup plot.py to regenrate the plots of teh paper.
+2. Run surface-tension.py to measure the local surface tension of the film.
+
