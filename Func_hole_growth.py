@@ -294,9 +294,9 @@ def get_hole_growth_p2p (fdir,rec0,skip,ha,showfig = False):
                  
         binarythickness = smoothedthickness.copy()
         ## binarize the thickness array, holecutoff is just separating 0s and 1s
-        holecutoff = 0.5
-        binarythickness[binarythickness<=holecutoff] = 1        
-        binarythickness[binarythickness>1] = 0        
+        holecutoff = 0.5 # an arbitrality chosen thickness that we consider holes
+        binarythickness = np.where(binarythickness<=holecutoff,1,0) # holes as 1s, and liquid as zero
+               
             
         ###############   DETECT holes   #################               
         holeAreaPx, numOfholes = detectHole(binarythickness)
