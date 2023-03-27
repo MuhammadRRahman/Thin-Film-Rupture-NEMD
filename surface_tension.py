@@ -42,7 +42,7 @@ skip = 50
 rhocutoff = 0.4
 cmap = plt.cm.RdYlBu_r
 
-fdir = 'film-rupture-h1/'
+fdir = 'film-rupture-h1/' # replace with the path to directory where MD data files are stored
 PPObj = ppl.All_PostProc(fdir)
 print(PPObj)
 
@@ -232,8 +232,8 @@ for user_location in user_locations:
     g_tip_sd = np.std (gamma_tip)
     g_film = np.asarray(gamma_film)
     g_film_mean = np.mean (gamma_film)
-    g_film_sd = np.std (gamma_film)
-    g_film_sem = st.sem(gamma_film)
+    g_film_sd = np.std (gamma_film) # standard deviation
+    g_film_sem = st.sem(gamma_film) # standard error of the mean
     
 
     gamma_locs.append(g_film_mean)
@@ -250,3 +250,85 @@ plt.errorbar(np.asarray(gamma_locs)/gamma_max, (np.asarray(user_locations))*dy, 
 plt.xlim([0.8,1.05])
 plt.xlabel(r'$\gamma (r)/\gamma$')
 plt.ylabel(r'$r$')
+
+
+
+## SAVE DATA
+Data2save = np.array([(np.asarray(user_locations))*dy, np.asarray(gamma_locs), g_film_sem, gamma_max])
+savedir = './Data/'
+
+filename = savedir + 'datafile-surften' + fdir + '.npy'
+np.save(filename,myData)
+
+
+## Run the above code for each of the n number of independent simulations for similar case, then there will be 'n number of datafiles.
+## Then run this following code block to plot averaged data over the simulations
+"""
+import os
+import glob
+import numpy as np
+import matplotlib.pyplot as plt
+
+datadir = './Data/'
+os.chdir(datadir)
+files = glob.glob('*.npy')
+
+datadict = {}
+count = 0
+for file in files:
+        
+    datadict[count] = np.load(file,allow_pickle=True)
+    count+=1
+    
+file_range = np.arange(0,len(files))
+ls = []
+# find teh minimum length
+for f in file_range:
+    ls.append ( len(datadict[f][0]) )
+l = np.min(np.asarray(ls))
+    
+ndrad = np.mean( np.array ( [datadict[i][0][0:l] for i in file_range ]), axis = 0 )   
+gamma_ensavg = np.mean( np.array ( [datadict[i][1][0:l] for i in file_range ]), axis = 0 ) 
+gammaSD_ensavg = np.mean( np.array ( [datadict[i][2][0:l] for i in file_range ]), axis = 0 ) 
+gamma_maxenavg = np.mean( np.array ( [datadict[i][3] for i in file_range ]), axis = 0 ) 
+
+
+# carefully check whether the location data is in reduced units or in pixels
+mdloc =  userloc*dy # to convert to reduced units
+    
+plt.figure(figsize=(6,8))
+#plt.errorbar(np.asarray(gamma_ensavg)/gamma_maxenavg, mdloc, xerr=gammaSD_ensavg, marker='o', mfc='red',
+#         mec='k', ms=20, mew=2, color='k', linestyle=' ', ecolor='k', elinewidth=2, capsize=2)
+
+plt.plot(np.asarray(gamma_ensavg), mdloc, marker='o', mfc='red',
+         mec='k', ms=20, mew=2, color='k', linestyle=' ')
+
+
+plt.xlim([0.7,1.05])
+plt.ylim([-10,250])
+plt.yticks([0,50,100,150,200,250])
+plt.xticks([0.75, 1.0])
+
+plt.xlabel(r'$\gamma (r)/\gamma$')
+plt.ylabel(r'$\delta$')
+
+fsize = 15
+plt.rc('font', size=fsize)
+plt.rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
+plt.rc('text', usetex=True)
+plt.rcParams["figure.autolayout"] = True
+plt.rcParams['font.size'] = 40
+plt.rcParams['axes.labelsize'] = 38
+plt.rcParams['font.family'] = 'Times New Roman' #'sans-serif'
+plt.rcParams['axes.linewidth'] = 4 #set the value globally
+plt.rcParams['lines.linewidth'] = 4 #set the value globally
+plt.tick_params(axis='both', which='major', pad=20, length=10, width=2)
+
+
+"""
+
+
+
+
+
+
