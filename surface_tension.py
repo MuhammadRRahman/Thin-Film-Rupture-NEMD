@@ -29,8 +29,8 @@ plt.rcParams['lines.linewidth'] = 3 #set the value globally
 plt.tick_params(axis='both', which='major', pad=20, length=10, width=2)
 
 ## ................................................................................ ##
-from P02_surface_functions import radial_profile, order
-from P02_surface_functions import transform_pressure_tensor 
+from Func_surface_functions import radial_profile, order
+from Func_surface_functions import transform_pressure_tensor 
 ## ................................................................................ ##
 
 
