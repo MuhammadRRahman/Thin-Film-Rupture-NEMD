@@ -12,6 +12,8 @@ Once Flowmol is installed:
      Remove molecules (currently this is based on a similar setup to the external force)
      where inputs are position [x,y,z] of the hole center, radius and then direction (x=0, y=1, z=2), ends[bottom,top] of the film, and target density
      i.e.: fs.remove_molecules([0.,0.,0.],8,0,[-6.5,6.5], 0.01). The python code writes a new initial_state file to be used in the production phase.
+     
+     NB. MD_02_cut_a_hole.py requires the final_state (from the equilibration phase) file be in the same directory. 
 
 3. Use the final_state from step 2 as a restart file to run MD_03_production.in with NVE ensemble for sufficiently long time.
 
