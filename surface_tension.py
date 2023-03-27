@@ -187,6 +187,7 @@ for user_location in user_locations:
                 ax[1,i].set_ylabel(r"$P$")
             #ax[1].set_xlabel(r"$x$")
             
+            # P_normal - P_tangential = P_N - 0.5*(P_T1 + P_T2)
             PNmPT = (np.mean(P["PN"][:,s:e],1) 
                        - 0.5*(np.mean(P["PT1"][:,s:e],1)+np.mean(P["PT2"][:,s:e],1)))
             
