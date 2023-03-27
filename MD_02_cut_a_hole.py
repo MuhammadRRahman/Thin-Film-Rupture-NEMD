@@ -55,64 +55,6 @@ class final_state:
             for k, i in self.headerDict.items():
                 print(k,i)
 
-        #Read integers in header
-#        self.dtype = np.int32
-#        self.dtypesize = np.dtype(self.dtype).itemsize
-#        headerdata = np.fromfile(self.fname, dtype=self.dtype, offset=self.headersize)
-#        self.initialunits = np.zeros(3); self.periodic = np.zeros(3); self.seed = np.zeros(2)
-#        self.N = headerdata[0]
-#        self.initialunits[0] = headerdata[1]
-#        self.initialunits[1] = headerdata[2]
-#        self.initialunits[2] = headerdata[3]
-#        self.Nsteps = headerdata[4]              #Number of computational steps
-#        self.tplot  = headerdata[5]              #Frequency at which to record results
-#        self.seed[0]  = headerdata[6]            #Random number seed value 1
-#        self.seed[1]  = headerdata[7]            #Random number seed value 2
-#        self.periodic[0] = headerdata[8]          #Boundary condition flags
-#        self.periodic[1] = headerdata[9]          #Boundary condition flags
-#        self.periodic[2]    = headerdata[10]       #Boundary condition flags
-#        self.potential_flag = headerdata[11]       #Polymer/LJ potential flag
-#        self.rtrue_flag  = headerdata[12]       #
-#        self.solvent_flag  = headerdata[13]     #Solvent on/off flag
-#        self.nmonomers= headerdata[14]               #Polymer chain length
-#        self.npx  = headerdata[15]              #Processors (npx) for new topology
-#        self.npy  = headerdata[16]              #Processors (npy) for new topology
-#        self.npz   = headerdata[17]             #Processors (npz) for new topology
-#        nproc = self.npx*self.npy*self.npz
-#        self.nproc = nproc
-#        self.procnp = np.zeros(nproc); self.proctethernp = np.zeros(nproc)
-#        for p in range(nproc):
-#            self.procnp[p] = headerdata[17+p+1] #Number of molecules per processors
-#        for p in range(nproc):
-#            self.proctethernp[p] = headerdata[17+nproc+p+1]    #Number of tethered molecules per processors
-#        self.mie_potential = headerdata[-4]        
-#        self.global_numbering = headerdata[-3]  
-
-#        if verbose:
-#            print(headerdata)  
-
-#        #Read the double precision part
-#        dpheaderdata = np.fromfile(self.fname, dtype=np.double, 
-#                                   offset=self.headersize+(18+2*nproc)*self.dtypesize)
-
-#        if verbose:
-#            print(dpheaderdata) 
-#        self.globaldomain = np.zeros(3)
-#        self.globaldomain[0] = dpheaderdata[0]
-#        self.globaldomain[1] = dpheaderdata[1]
-#        self.globaldomain[2] = dpheaderdata[2]
-#        self.density = dpheaderdata[3]
-#        self.rcutoff = dpheaderdata[4]
-#        self.delta_t = dpheaderdata[5]
-#        self.elapsedtime    = dpheaderdata[6]
-#        self.simtime = dpheaderdata[7]
-#        self.k_c = dpheaderdata[8]
-#        self.R_0 = dpheaderdata[9]
-#        self.eps_pp  = dpheaderdata[10]
-#        self.eps_ps  = dpheaderdata[11]
-#        self.eps_ss  = dpheaderdata[12]
-#        self.delta_rneighbr = dpheaderdata[13]
-
     def read_moldata(self):
 
         #Read the rest of the data
@@ -345,8 +287,8 @@ if __name__ == "__main__":
     #Plot it
     fs.plot_molecules(ax[0])
     
-    #Remove molecules   (currently this is based on a similar setup to the external force)
-    # where inputs are position [x,y,z], radius and then direction (x=0, y=1, z=2), ends[bottom,top], targetdensity
+    # Remove molecules to cut a hole on the film
+    # Inputs are position [x,y,z], radius and then direction (x=0, y=1, z=2), ends[bottom,top] of the film top and bottom, and target density
     fs.remove_molecules([0.,0.,0.],8,0,[-6.5,6.5], 0.01)
 
     #write a new initial_state file
