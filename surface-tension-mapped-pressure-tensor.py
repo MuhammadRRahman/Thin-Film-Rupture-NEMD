@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Sep 14 12:01:24 2022
-@author: muhammadrizwanurrahman
-@author: Additions 06/11/22 by edwardsmith999 to fit ellipse+transform
+@author: edwardsmith999 
 """
 
 
