@@ -19,5 +19,6 @@ Once Flowmol is installed:
 
 # Analysing the data
 1. Func_hole_growth.py and Func_surface_functions.py contain the required subroutines called from other .py files.
-1. Run hole-growth.py to track the hole radius over time.
-2. Run surface-tension.py to measure the local surface tension of the film.
+1. hole-growth.py  tracks the hole radius over time.
+2. surface-tension.py  measures the local surface tension of the film.
+3. surface-tension-mapped-pressure-tensor.py measures local surface tension with pressuree-tensor rotated along the rim profile. Also tracks the evolution      of the film profile with time.
