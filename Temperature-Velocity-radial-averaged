@@ -69,7 +69,6 @@ cnt = 0
 
 length_with_velocity = []
 startrec =0
-endred = 150
 for rec in range(startrec+ha, endrec, skip):
         
         # First plot all the slices, then the radial averaged rotated velocity
