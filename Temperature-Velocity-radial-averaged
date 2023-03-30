@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Sep 12 11:19:22 2022
-@author: muhammadrizwanurrahman
+@author: MuhammadRRahman, edwardsmith999
 """
 
 import matplotlib.pyplot as plt
