@@ -137,7 +137,7 @@ for rec in range(startrec+ha, endrec, skip):
         Tave = []
         #Average around in a radial sweep
         #figT,axT = plt.subplots(figsize=(8,8))
-        #print('ERROR !!! ERROR !!! ERROR !!! line no: 180 !')
+        
         for k in range(Udata.shape[0]):
             Tave.append(radial_profile(T[k,:,:],[mid[1],mid[2]]))
         Tave = np.array(Tave)
