@@ -1,3 +1,10 @@
+Codes to reproduce data for: Non-Equilibrium Molecular Simulations of Thin Film Rupture
+by
+Muhammad Rizwanur Rahman, Li Shen, James P. Ewen, Benjamin Collard, David Michael Heyes, Daniele Dini, and, Edward R. Smith.
+Journal of Chemical Physics (Communication), April 2023.
+DOI: DOI: 10.1063/5.0149974 (in press)
+
+
 # Thin-Film-Rupture
 Flowmol MD solver was used for the simulations. This is an open source platform developed by one of the authors (E. R. Smith) and can be found here: https://github.com/edwardsmith999/flowmol#flowmol
 Once Flowmol is installed: 
