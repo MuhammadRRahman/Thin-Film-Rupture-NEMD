@@ -1,4 +1,5 @@
-Codes to reproduce data for: Non-Equilibrium Molecular Simulations of Thin Film Rupture
+Codes to reproduce data for: 
+# Non-Equilibrium Molecular Simulations of Thin Film Rupture
 by
 Muhammad Rizwanur Rahman, Li Shen, James P. Ewen, Benjamin Collard, David Michael Heyes, Daniele Dini, and, Edward R. Smith.
 Journal of Chemical Physics (Communication), April 2023.
