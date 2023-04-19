@@ -7,7 +7,9 @@ Journal of Chemical Physics (Communication), April 2023.
 https://aip.scitation.org/doi/10.1063/5.0149974
 
 
-# Thin-Film-Rupture: MD Solver
+
+
+# MD Solver
 Flowmol MD solver was used for the simulations. This is an open source platform developed by one of the authors (E. R. Smith) and can be found here: https://github.com/edwardsmith999/flowmol#flowmol
 Once Flowmol is installed: 
 
