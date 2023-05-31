@@ -117,6 +117,23 @@ class final_state:
         ax.scatter(self.r[:,0], self.r[:,1], self.r[:,2], c=self.tag[:])
 
     def remove_molecules(self, rpos, radius, rdim=0, ends=None, targetdensity=0.):
+        
+        """
+        This method is designed to remove molecules from the simulation within a specified region, effectively creating a "hole" in the system. The parameters are:
+        - `rpos`: The position of the center of the region where molecules will be removed.
+        - `radius`: The radius of the region where molecules will be removed.
+        - `rdim`: The direction of the region where molecules will be removed (0 for x, 1 for y, 2 for z).
+        - `ends`: The ends of the region where molecules will be removed. If `ends` is `None`, the region extends infinitely in the `rdim` direction.
+        - `targetdensity`: The target density of molecules in the region after removal. If `targetdensity` is greater than the current density, no molecules will be removed.
+        
+        The method first calculates the volume of the region where molecules will be removed, either as a cylinder (if `rdim` is not 3) or as a sphere (if `rdim` is 3).
+        Then, it calculates the current density of molecules in the region. If the current density is less than or equal to the target density, no molecules are removed.
+        If the current density is greater than the target density, the method calculates the ratio of the target density to the current density. This ratio is used as a 
+        probability to decide whether each molecule in the region should be removed. This then loops over all molecules in the system. For each molecule, 
+        it calculates its distance from the center of the region. If the molecule is within the region and its removal would not reduce the density below the target density,
+        the molecule is marked for removal. Finally, if any molecules were marked for removal, the method updates the total number of molecules in the system and sets 
+        a flag indicating that molecules were removed.
+        """
 
         h = self.headerDict
         N = h["globalnp"]
