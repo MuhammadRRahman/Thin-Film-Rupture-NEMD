@@ -32,7 +32,8 @@ Once Flowmol is installed:
      NB. MD_02_cut_a_hole.py requires the final_state (from the equilibration phase) file in the same directory. 
 
 3. Use the final_state from step 2 as a restart file to run MD_03_production.in with NVE ensemble for sufficiently long time.
-4. For spontaneous hole formation, skip step 2, and start production phase without externally poking or cutting a hole in th efilm.
+4. For spontaneous hole formation, skip step 2, and start production phase without externally poking or cutting a hole in the film. To attain rupture within computationally feasible time, start with thinner films.
+5. To save finalstates frequently for the investigation of teh memory window, set the 
 
 # Analysing the data
 1. Func_hole_growth.py and Func_surface_functions.py contain the required subroutines called from other .py files.
