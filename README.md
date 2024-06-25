@@ -1,12 +1,17 @@
 Codes to reproduce data for: 
-# Non-Equilibrium Molecular Simulations of Thin Film Rupture
-by
-Muhammad Rizwanur Rahman, Li Shen, James P. Ewen, Benjamin Collard, David Michael Heyes, Daniele Dini, and, Edward R. Smith.
-Journal of Chemical Physics (Communication), April 2023.
 
-https://aip.scitation.org/doi/10.1063/5.0149974
+2. Life and Death of a Thin Liquid Film
+   by
+   Muhammad Rizwanur Rahman, Li Shen, James P. Ewen, David M. Heyes, Daniele Dini, and, Edward R. Smith (under review).
+   Initial preprint: arXiv preprint arXiv:2311.00419
+   
+1. Non-Equilibrium Molecular Simulations of Thin Film Rupture
+   by 
+   Muhammad Rizwanur Rahman, Li Shen, James P. Ewen, Benjamin Collard, David M. Heyes, Daniele Dini, and, Edward R. Smith.
+   Journal of Chemical Physics (Communication), April 2023.
+   https://aip.scitation.org/doi/10.1063/5.0149974
 
-
+** This repository will be further developed. 
 
 
 # MD Solver
@@ -27,6 +32,7 @@ Once Flowmol is installed:
      NB. MD_02_cut_a_hole.py requires the final_state (from the equilibration phase) file in the same directory. 
 
 3. Use the final_state from step 2 as a restart file to run MD_03_production.in with NVE ensemble for sufficiently long time.
+4. For spontaneous hole formation, skip step 2, and start production phase without externally poking or cutting a hole in th efilm.
 
 # Analysing the data
 1. Func_hole_growth.py and Func_surface_functions.py contain the required subroutines called from other .py files.
