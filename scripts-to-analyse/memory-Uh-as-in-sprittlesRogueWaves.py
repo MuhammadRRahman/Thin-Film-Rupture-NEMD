@@ -14,6 +14,7 @@ ppdir = './postproclib/'
 sys.path.append(ppdir)
 import postproclib as ppl
 from scipy.signal import savgol_filter
+from scipy.ndimage import measurements
 
 
 def get_thickness (fdir):
