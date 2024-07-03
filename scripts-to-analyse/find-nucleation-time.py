@@ -111,7 +111,7 @@ def get_thickness(dendata, dx):
 
 
 
-fdir0 = '/Volumes/MRR_03/paper-03-spontaneous/no-poke-confirming-film-stability-A/' 
+fdir0 = './no-poke-confirming-film-stability-A/' 
 fdirs = [
          '20-192-192-no-poke-en01','20-192-192-no-poke-en02','20-192-192-no-poke-en03',
          '22-192-192-no-poke-en01','22-192-192-no-poke-en01','22-192-192-no-poke-en01',
@@ -127,7 +127,7 @@ fdirs = [
          '38-192-192-no-poke'
          ] 
 
-datadir = '/Users/muhammadrizwanurrahman/MRR_Research/gitREPO-data-and-images/spontaneous-nucleation/all-that-is-good-data/thickness-and-nucleation-time/'
+datadir = './thickness-and-nucleation-time/'
 filename = datadir + 'thickness-and-nucleation-time-svf.csv'
 
 initial_thickness = [] 
