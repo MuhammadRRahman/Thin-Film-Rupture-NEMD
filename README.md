@@ -3,7 +3,7 @@ Codes to reproduce data for:
 # Life and Death of a Thin Liquid Film
    by
    Muhammad Rizwanur Rahman, Li Shen, James P. Ewen, David M. Heyes, Daniele Dini, and, Edward R. Smith (under review).
-   Initial preprint: arXiv preprint arXiv:2311.00419, data-files: https://doi.org/10.5281/zenodo.12633918
+   Initial preprint: arXiv preprint: https://doi.org/10.48550/arXiv.2311.00419, data-files: https://doi.org/10.5281/zenodo.12633918
    
 # Non-Equilibrium Molecular Simulations of Thin Film Rupture
    by 
