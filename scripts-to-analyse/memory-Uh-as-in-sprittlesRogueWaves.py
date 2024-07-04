@@ -104,71 +104,6 @@ def get_thickness (fdir):
     return H, h0, time_in_lj, topZ, botZ, dy, dz, time_factor
 
 
-def detect_hole (dendata, dx, stop_at_first_hole=1):
-    
-    """
-    rho: 3D array (x, y, z) at time_step t
-    dx: bin size along film thickness, float
-    
-    returns: 
-        numOfholes, smoothedthickness in units of cells instead of MD,
-        hole_coordinates: list of coordinates for each hole
-    """
-    rho = dendata.copy()
-    
-    densitycut = 0.1
-    holecutoff = 0.4
-    # Compute the liquid region
-    liquid = np.array(rho > densitycut, dtype=int)
-    # Compute the interface regions
-    interface = np.gradient(liquid, axis=0)
-    # Initialize thickness matrix
-    thickness = np.zeros((interface.shape[1], interface.shape[2]))
-    
-    numOfholes = np.nan
-    hole_coordinates = []
-
-    # Compute the thickness for each point
-    for i in range(interface.shape[1]):
-        for j in range(interface.shape[2]):
-            # Should be 2 values for top and bottom surface
-            indx = np.where(interface[:,i,j] != 0)[0]
-            if len(indx) != 0:
-                thickness[i,j] = dx*(indx[-1] - indx[0])
-            else:
-                thickness[i,j] = 0.
-    
-    # Smooth the thickness
-    smoothedthickness = thickness.copy()   # this is in MD units    
-    # Binarize the thickness (with holes as 1 and liquid as 0)
-    binarythickness = smoothedthickness.copy()
-    binarythickness[binarythickness<=holecutoff] = 1        
-    binarythickness[binarythickness>1] = 0 
-
-    # Compute the label matrix and the number of holes
-    s = [[0,1,0], [1,1,1], [0,1,0]]  # connectedness of the holes
-    lw, numOfholes = measurements.label(binarythickness, structure=s)
-
-    # Ensure lw and binarythickness have the same shape
-    if lw.shape != binarythickness.shape:
-        raise ValueError("Mismatch in shapes of lw and binarythickness")
-    
-    # Find coordinates of each hole
-    for label in range(1, numOfholes + 1):
-        coordinates = np.argwhere(lw == label)
-        hole_coordinates.append(coordinates)
-        
-     
-    if (numOfholes) :
-        print('\n holes num',numOfholes)
-        
-        if (numOfholes==1):
-            print ('\n holes at:',hole_coordinates)
-               
-        
-    return numOfholes, hole_coordinates
-
-
 
 def calculate_U_2D (H, dx, dy, h0=None):
     """
@@ -266,7 +201,7 @@ fdirs = ['dir-1/', 'ddir-2/', 'dir-3/' , 'dir-4/' ,'dir-5/','dir-6/','dir-7/','d
 
 # REPLACE THE HOLE LOCATIONS AS OF YOUR CASES 
 # -------------------------------------------------------------------------------------------------
-# The hole locations are found by separately calling the detect_hole function from above.
+# The hole locations are found by running: detect-hole-and-hole-center.py script. 
 # The cases given here as for demo, all the cases that are re-started within the memory window 
 # ruptured at (34,19), the films restarted from an earlier point in time did not rupture at (34,19),
 # hence the location for these cases are replaced by (np.nan, np.nan)
