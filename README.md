@@ -34,7 +34,7 @@ Once Flowmol is installed:
 3. Use the final_state from step 2 as a restart file to run MD_03_production.in with NVE ensemble for sufficiently long time.
 4. For spontaneous hole formation, skip step 2, and start production phase without externally poking or cutting a hole in the film. To attain rupture within computationally feasible time, start with thinner films.
 5. To start the production phase, an NVT equilibrated state file is used. Some of these state files for spontaneous rupture cases, as well as for synthetically damaged hole growth cases are made publicly available at zenodo, please follow this link: https://doi.org/10.5281/zenodo.12633918
-6. To save finalstates frequently for the investigation of teh memory window, set the RESCUE_SNAPSHOT_FREQ to a lower value. 
+6. To save finalstates frequently for the investigation of the memory window, set the RESCUE_SNAPSHOT_FREQ to a lower value. 
 
 # Analysing the data
 1. Func_hole_growth.py and Func_surface_functions.py contain the required subroutines called from other .py files.
