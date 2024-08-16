@@ -215,6 +215,9 @@ t0s = np.array([80312, 85791, 89964, 94376, 94376,94376,94376,94376]) * 0.005
 
 fig,ax = plt.subplots(figsize=(10,6))
 hole_location = (np.nan, np.nan)
+nrecs = np.array([
+        34, 36, 40, 7, 8,  9, 12, 8
+        ]) # replace by real values: this are the records/time-steps when hole is formed
 
 case = 0
 for fdir1 in fdirs:
